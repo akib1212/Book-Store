@@ -4,6 +4,7 @@ import Recommende from "./Recommende.jsx"
 import TopSellers from "./TopSellers.jsx"
 import News from "./News.jsx"
 
+
 const Home = () => {
   return (
     <>
@@ -11,6 +12,7 @@ const Home = () => {
       <TopSellers/>
       <Recommende/>
       <News/>
+
     </>
   )
 }
