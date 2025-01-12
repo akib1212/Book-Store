@@ -8,7 +8,7 @@ import avatarImg from "../assets/avatar.png";
 import { useState } from "react";
 
 const Navbar = () => {
-  const currentuser = true;
+  const currentuser = false;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigation = [
     { name: "Dashboard", href: "/dashboard" },
@@ -18,7 +18,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="max-w-screen-2xl mx-auto px-4 py-6 border-solid border-2 border-sky-500">
+    <header className="max-w-screen-2xl mx-auto px-4 py-6">
       <nav className="flex justify-between items-center">
         {/* left side */}
         <div className="flex items-center md:gap-16 gap-4">
