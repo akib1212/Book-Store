@@ -6,16 +6,23 @@ import { HiOutlineHeart } from "react-icons/hi";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import avatarImg from "../assets/avatar.png";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const currentuser = false;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const cartItems = useSelector(state => state.cart.cartItems) || []; // Add default empty array
+  console.log('Cart State:', cartItems);
+  console.log('Number of items:', cartItems?.length);
+  
+  const currentuser = false;
   const navigation = [
     { name: "Dashboard", href: "/dashboard" },
     { name: "Orders", href: "/orders" },
     { name: "Cart Page", href: "/cart" },
     { name: "Check Out", href: "/checkout" },
   ];
+  
+ 
 
   return (
     <header className="max-w-screen-2xl mx-auto px-4 py-6">
@@ -55,8 +62,16 @@ const Navbar = () => {
                   <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md z-40">
                     <ul className="py-2">
                       {navigation.map((item) => (
-                        <li key={item.name} onClick={()=> setIsDropdownOpen(false)}>
-                          <Link to={item.href} className="block px-4 py-2 text-sm hover:bg-gray-100">{item.name}</Link>
+                        <li
+                          key={item.name}
+                          onClick={() => setIsDropdownOpen(false)}
+                        >
+                          <Link
+                            to={item.href}
+                            className="block px-4 py-2 text-sm hover:bg-gray-100"
+                          >
+                            {item.name}
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -78,7 +93,10 @@ const Navbar = () => {
             className="bg-primary p-1 sm:px-6 px-2 flex items-center rounded-md"
           >
             <HiOutlineShoppingCart className="size-6" />
-            <span className="text-sm font-semibold sm:ml-1">0</span>
+            
+            <span className="text-sm font-semibold sm:ml-1">
+            {cartItems?.length || 0}
+              </span>
           </Link>
         </div>
       </nav>
